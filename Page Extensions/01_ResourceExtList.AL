@@ -35,6 +35,5 @@ end;
     var ShowMaxField : Boolean;
 
     [InDataSet]
-
     var ShowType :Boolean;
 }
