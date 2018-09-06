@@ -7,7 +7,7 @@ pageextension 123456701 "CSD ResourceListExt" extends "Resource List"
         {
             Visible = ShowType;
         }
-        addafter("Type")
+        addafter(Type)
         {
             field("CSD Resource Type";"CSD Resource Type")
             {
