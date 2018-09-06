@@ -1,7 +1,7 @@
 {
   "id": "a460c0a9-7736-4430-b6b3-e82ee852e391",
   "name": "AL_SDSeminar1",
-  "publisher": "Default publisher",
+  "publisher": "JTG",
   "brief": "",
   "description": "",
   "version": "1.0.0.0",
@@ -14,10 +14,13 @@
   "capabilities": [],
   "dependencies": [],
   "screenshots": [],
+  "features": "TranslationFile",
+  "showMyCode": true,
+  "target": "Internal",
   "platform": "11.0.0.0",
   "application": "11.0.0.0",
   "idRange": {
-    "from": 50100,
-    "to": 50149
+    "from": 123456700,
+    "to": 123456799
   }
 }
