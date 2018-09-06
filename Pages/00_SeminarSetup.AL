@@ -49,7 +49,4 @@ page 123456700 "CSD Seminar Setup"
             Insert;
         end;
     end;
-    
-    var
-        myInt : Integer;
 }
