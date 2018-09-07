@@ -5,6 +5,8 @@ table 123456710 "CSD Seminar Reg. Header"
     //     - Created new table
     //   Chapter 8 - Lab 2-3
     //     - Added LookupId and DrillDownPageId
+    //   Chapter 9 - Lab 1-1
+    //     - Added Field "No. Printed"
     Caption = 'Seminar Registration Header';
     LookupPageId= "CSD Posted Seminar Reg. List";
     DrillDownPageId= "CSD Posted Seminar Reg. List";
@@ -56,12 +58,12 @@ table 123456710 "CSD Seminar Reg. Header"
                     Seminar.Get("Seminar No.");
                     Seminar.TestField(Blocked, false);
                     Seminar.TestField("Gen. Prod. Posting Group");
-                    Seminar.TestField("VAT. Prod. Posting Group");
+                    Seminar.TestField("VAT Prod. Posting Group");
                     "Seminar Name" := Seminar.Name;
                     "Duration" := Seminar."Seminar Duration";
                     "Seminar Price" := Seminar."Seminar Price";
                     "Gen. Prod. Posting Group" := Seminar."Gen. Prod. Posting Group";
-                    "VAT Prod. Posting Group" := Seminar."VAT. Prod. Posting Group";
+                    "VAT Prod. Posting Group" := Seminar."VAT Prod. Posting Group";
                     "Minimum Participants" := Seminar."Minimum Participants";
                     "Maximum Participants" := Seminar."Maximum Participants";
                 end;
@@ -267,8 +269,8 @@ table 123456710 "CSD Seminar Reg. Header"
                     SeminarRegHeader := Rec;
                     SeminarSetup.Get;
                     SeminarSetup.TestField("Seminar Registration Nos.");
-                    SeminarSetup.TestField("Posted Seminar Registration Nos.");
-                    if NoSeriesMgt.LookupSeries(SeminarSetup."Posted Seminar Registration Nos.", "Posting No. Series")
+                    SeminarSetup.TestField("Posted Seminar Reg. Nos.");
+                    if NoSeriesMgt.LookupSeries(SeminarSetup."Posted Seminar Reg. Nos.", "Posting No. Series")
                     then begin
                         VALIDATE("Posting No. Series");
                     end;
@@ -281,8 +283,8 @@ table 123456710 "CSD Seminar Reg. Header"
                 if "Posting No. Series" <> '' then begin
                     SeminarSetup.Get;
                     SeminarSetup.TestField("Seminar Registration Nos.");
-                    SeminarSetup.TestField("Posted Seminar Registration Nos.");
-                    NoSeriesMgt.TestSeries(SeminarSetup."Posted Seminar Registration Nos.", "Posting No. Series");
+                    SeminarSetup.TestField("Posted Seminar Reg. Nos.");
+                    NoSeriesMgt.TestSeries(SeminarSetup."Posted Seminar Reg. Nos.", "Posting No. Series");
                 end;
                 TestField("Posting No.", '');
             end;
@@ -290,6 +292,11 @@ table 123456710 "CSD Seminar Reg. Header"
         Field(28; "Posting No."; Code[20])
         {
             Caption = 'Posting No.';
+        }
+        field(40;"No. Printed";Integer)
+        {
+            Caption='No. Printed';
+            Editable=false;
         }
     }
 
@@ -368,7 +375,7 @@ table 123456710 "CSD Seminar Reg. Header"
             "Posting Date" := WorkDate;
         "Document Date" := WorkDate;
         SeminarSetup.Get;
-        NoSeriesMgt.SetDefaultSeries("Posting No. Series", SeminarSetup."Posted Seminar Registration Nos.");
+        NoSeriesMgt.SetDefaultSeries("Posting No. Series", SeminarSetup."Posted Seminar Reg. Nos.");
     end;
 
     procedure AssistEdit(OldSeminarRegHeader: Record "CSD Seminar Reg. Header"): Boolean;

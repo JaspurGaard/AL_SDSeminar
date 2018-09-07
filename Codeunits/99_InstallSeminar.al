@@ -58,7 +58,7 @@ codeunit 123456799 InstallSeminar
         NoSerieLine."Series Code" := NoSerie.Code;
         NoSerieLine."Starting No." := 'SEMPREG0000';
         if NoSerieLine.Insert then;
-        SeminarSetup."Posted Seminar Registration Nos." := NoSerie.code;
+        SeminarSetup."Posted Seminar Reg. Nos." := NoSerie.code;
 
         SeminarSetup.Modify;
 
